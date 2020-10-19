@@ -39,7 +39,7 @@ app.get('/api/cat/all', function (req, res) {
 
 // idで1件取得
 app.post('/api/cat/get', function (req, res) {
-    user.findById(req.body.id, function(err, result) {
+    user.findById(req.body._id, function(err, result) {
         if (err) throw err;
         res.json(result);
     });
@@ -58,16 +58,16 @@ app.put('/api/cat/create', function (req, res) {
 app.put('/api/cat/update', function (req, res) {
     user.findByIdAndUpdate(req.body._id, req.body, {"new": true}, function(err, result) {
         if (err) throw err;
-        console.log(req.body.id + ': successfully updated.');
+        console.log(req.body._id + ': successfully updated.');
         res.json(result);
     });
 });
 
 // idで1件削除
 app.delete('/api/cat/delete', function (req, res) {
-    user.findByIdAndDelete(req.body.id, function(err, result) {
+    user.findByIdAndDelete(req.body._id, function(err, result) {
         if (err) throw err;
-        console.log(req.body.id + ': successfully deleted.');
+        console.log(req.body._id + ': successfully deleted.');
         res.json(result);
     });
 });
